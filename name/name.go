@@ -22,7 +22,7 @@ func NewClient(userName string, token string) (*NameDotComClient, error) {
 func (c *NameDotComClient) Present(ResolvedZone string, ResolvedFQDN string, Key string) error {
 	_, zoneName, err := c.getHostedZone(ResolvedZone)
 	if err != nil {
-		return fmt.Errorf("alicloud: error getting hosted zones: %v", err)
+		return fmt.Errorf("namecom: error getting hosted zones: %v", err)
 	}
 
 	recordAttributes := c.newTxtRecord(zoneName, ResolvedFQDN, Key)
@@ -39,7 +39,7 @@ func (c *NameDotComClient) Present(ResolvedZone string, ResolvedFQDN string, Key
 func (c *NameDotComClient) CleanUp(resolvedZone string, resolvedFQDN string, delKey string) error {
 	records, err := c.findTxtRecords(resolvedZone, resolvedFQDN)
 	if err != nil {
-		return fmt.Errorf("cnamecom: error finding txt records: %v", err)
+		return fmt.Errorf("namecom: error finding txt records: %v", err)
 	}
 
 	_, zone, err := c.getHostedZone(resolvedZone)

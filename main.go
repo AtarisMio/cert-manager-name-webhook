@@ -99,7 +99,7 @@ func (c *namecomDNSProviderSolver) Present(ch *v1alpha1.ChallengeRequest) error 
 		return err
 	}
 
-	return dnsClient.Present(ch.ResolvedZone, ch.ResolvedFQDN, ch.Key)
+	return dnsClient.Present(domainName, ch.ResolvedFQDN, ch.Key)
 }
 
 func (c *namecomDNSProviderSolver) dnsClient(domain string, cfg namecomDNSProviderConfig, ch *v1alpha1.ChallengeRequest) (*name.NameDotComClient, error) {
@@ -143,7 +143,13 @@ func (c *namecomDNSProviderSolver) CleanUp(ch *v1alpha1.ChallengeRequest) error 
 		return err
 	}
 
-	return client.CleanUp(ch.ResolvedZone, ch.ResolvedFQDN, ch.Key)
+	zoneName, err := util.FindZoneByFqdn(ch.ResolvedFQDN, util.RecursiveNameservers)
+	if err != nil {
+		return err
+	}
+	domainName := util.UnFqdn(zoneName)
+
+	return client.CleanUp(domainName, ch.ResolvedFQDN, ch.Key)
 }
 
 // Initialize will be called when the webhook first starts.
