@@ -2,6 +2,15 @@ apiVersion: v1
 entries:
   namecom-webhook:
   - apiVersion: v1
+    appVersion: 1.0.1
+    created: "2022-11-10T17:45:49.444494025Z"
+    description: Deploys namecom webhook for cert-manager.
+    digest: 8c8d2745056f890aa0fd9f100da296e788f96f4d0aab9870984967b29cee823c
+    name: namecom-webhook
+    urls:
+    - https://github.com/AtarisMio/cert-manager-name-webhook/releases/download/namecom-webhook-1.0.2/namecom-webhook-1.0.2.tgz
+    version: 1.0.2
+  - apiVersion: v1
     appVersion: 1.0.0
     created: "2022-11-10T16:32:42.39144487Z"
     description: Deploys namecom webhook for cert-manager.
@@ -10,4 +19,4 @@ entries:
     urls:
     - https://github.com/AtarisMio/cert-manager-name-webhook/releases/download/namecom-webhook-1.0.1/namecom-webhook-1.0.1.tgz
     version: 1.0.1
-generated: "2022-11-10T16:32:42.391478672Z"
+generated: "2022-11-10T17:45:49.444506026Z"
