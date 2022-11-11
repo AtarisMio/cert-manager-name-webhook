@@ -1,4 +1,4 @@
-module github.com/ataris-mio/cert-manager-name-webhook
+module github.com/atarismio/cert-manager-name-webhook
 
 go 1.19
 
